@@ -13,15 +13,17 @@ En un principio, únicamente se va a poder listar las habitaciones disponibles e
 	 
  - *Respuesta 200*:
  ```
- {[{room_type: type1,
- occuped_dates:[{from: 10-08-2023, to: 15-08-2023}, ...},...],
- price_per_night: 30.99,
- max_occupants: 4,
- active_offer: {
-     name: "Nombre oferta",
-	 discount: 25,
-	 range_date: {begining: 20-08-2023, end: 25-12-2023}
-}, ... ]}
+ {[
+    {   room_type: type1,
+        occuped_dates:[{from: 10-08-2023, to: 15-08-2023}, ...},...],
+        price_per_night: 30.99,
+        max_occupants: 4,
+        active_offer: {
+            name: "Nombre oferta",
+            discount: 25,
+            range_date: {begining: 20-08-2023, end: 25-12-2023}
+    }, ... 
+]}
 ```
  
  - Respuesta 40X: {"Error, no se ha podido listar las habitaciones"}
@@ -32,10 +34,12 @@ En un principio, únicamente se va a poder listar las habitaciones disponibles e
 
  - *Respuesta 200*:
  ```
- {[{name: "Habitaciones suite",
- price_per_night: 30.99,
- max_occupants: 4
- }, ... ]}
+ {[
+    {   name: "Habitaciones suite",
+        price_per_night: 30.99,
+        max_occupants: 4
+    }, ... 
+ ]}
  ```
 
  - Respuesta 40X: {"Error, no se ha podido listar los tipos de habitaciones"}
