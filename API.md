@@ -1,6 +1,8 @@
-##  **Hotel2 api**
+#  **Hotel2 api**
 
-**Listar habitaciones (GET)** (/habitaciones)
+En un principio, únicamente se va a poder listar las habitaciones disponibles en un rango de fecha, y el tipo de habitaciones que disponemos en la aplicación. Ahora, los endpoints son los siguientes:
+
+## **Listar habitaciones (GET)** (/habitaciones)
 
  - *Descripción*: Con este endpoint se podrá obtener el listado de habitaciones disponibles en nuestra aplicación. Se podrán pasar los siguientes ***parámetros*** para el filtrado de estas:
  
@@ -24,7 +26,7 @@
  
  - Respuesta 40X: {"Error, no se ha podido listar las habitaciones"}
 
-**Listar tipos de habitaciones** (/tipo_habitaciones)
+## **Listar tipos de habitaciones (GET)** (/tipo_habitaciones)
 	 - *Descripción*: Con este endpoint se podrá obtener la lista de todos los tipos de habitaciones.
 
  - *Respuesta 200*:
