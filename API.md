@@ -21,7 +21,8 @@ En un principio, únicamente se va a poder listar las habitaciones disponibles e
         active_offer: {
             name: "Nombre oferta",
             discount: 25,
-            range_date: {begining: 20-08-2023, end: 25-12-2023}
+            range_date: {begining: 20-08-2023, end: 25-12-2023},
+        url: "https://url-a-nuestra-pagina-de-reserva.com"
     },
     {   room_type: 1,
         occuped_dates:[{from: 12-08-2023, to: 19-08-2023}, ...},...],
@@ -30,7 +31,8 @@ En un principio, únicamente se va a poder listar las habitaciones disponibles e
         active_offer: {
             name: "Nombre oferta",
             discount: 25,
-            range_date: {begining: 20-08-2023, end: 25-12-2023}
+            range_date: {begining: 20-08-2023, end: 25-12-2023},
+        url: "https://url-a-nuestra-pagina-de-reserva.com"
     }, ... 
 ]}
 ```
