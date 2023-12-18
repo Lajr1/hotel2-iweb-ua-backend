@@ -27,7 +27,8 @@ En un principio, únicamente se va a poder listar las habitaciones disponibles e
  - Respuesta 40X: {"Error, no se ha podido listar las habitaciones"}
 
 ## **Listar tipos de habitaciones (GET)** (/tipo_habitaciones)
-	 - *Descripción*: Con este endpoint se podrá obtener la lista de todos los tipos de habitaciones.
+
+ - *Descripción*: Con este endpoint se podrá obtener la lista de todos los tipos de habitaciones.
 
  - *Respuesta 200*:
  ```
