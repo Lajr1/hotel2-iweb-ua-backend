@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function login(Request $request){
-        return response()->json(["hola" => "Hola mundo"],200);
+    public function login(Request $request)
+    {
+        return response()->json(["hola" => "Hola mundo cambio"], 200);
     }
 }
