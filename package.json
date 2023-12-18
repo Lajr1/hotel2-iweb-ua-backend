@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "populate": "php artisan migrate:refresh --seed"
     },
     "devDependencies": {
         "axios": "^1.6.1",
