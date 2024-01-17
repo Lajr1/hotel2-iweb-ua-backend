@@ -2,10 +2,9 @@
 
 namespace App\Services;
 
+use App\Exceptions\BaseException;
 use App\Models\User;
-use App\Models\UsersType;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Hash;
+use App\Repositories\UserRepository;
 
 class CreateUser
 {
@@ -18,7 +17,10 @@ class CreateUser
 
     private function createUser($data)
     {
-
+        $repository = new UserRepository();
+        if ($repository->findByEmail($data['email'])) {
+            throw new BaseException("Este email ya existe", 400);
+        }
         $user = new User();
 
         $user->name = $data['name'];
