@@ -37,6 +37,34 @@ class UserSeeder extends Seeder
 
         ];
 
+        $user2 = [
+            'name' => 'Admin User',
+            'password' => '102324iwebua',
+            'email' => 'admin@iwebuaadmin.com',
+            'location' => 'Alicante',
+            'country' => 'España',
+            'address' => 'Avenida Nueva',
+            'zip_code' => '03010',
+            'phone_number' => '610081999',
+            'type_id' => $typeAdmin->id
+
+        ];
+
+        $user3 = [
+            'name' => 'Receptionist User',
+            'password' => '102324iwebua',
+            'email' => 'receptionistuser@iwebuareceptionist.com',
+            'location' => 'Alicante',
+            'country' => 'España',
+            'address' => 'Avenida Nueva',
+            'zip_code' => '03010',
+            'phone_number' => '610081999',
+            'type_id' => $typeReceptionist->id
+
+        ];
+
         $createUserService($user1);
+        $createUserService($user2);
+        $createUserService($user3);
     }
 }

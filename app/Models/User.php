@@ -61,34 +61,31 @@ class User extends Authenticatable
             set: fn (string $value) => Hash::needsRehash($value) ? Hash::make($value) : $value
         );
     }
-    public function type()
+    public function user_type()
     {
-        return $this->belongsTo(UsersType::class)->withTrashed();
+        return $this->belongsTo(UsersType::class, 'user_type');
     }
 
-    public function setType(UsersType $type)
+    public function setType(UsersType $user_type)
     {
-        $this->type = $type;
+        $this->user_type = $user_type;
     }
 
     public function getType()
     {
-        $this->type->getTypeName();
+        $this->user_type->getTypeName();
     }
-
-
-
 
     public function isAdmin()
     {
-        $this->type->getTypeName() == "Admin";
+        return $this->user_type == 1;
     }
     public function isReceptionist()
     {
-        $this->type->getTypeName() == "Receptionist";
+        return $this->user_type == 2;
     }
     public function isBaseUser()
     {
-        $this->type->getTypeName() == "BaseUser";
+        return $this->user_type == 3;
     }
 }
