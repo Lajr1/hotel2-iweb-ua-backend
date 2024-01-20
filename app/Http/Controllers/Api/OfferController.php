@@ -24,6 +24,7 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize("store", Offer::class);
         $request->validate([
             'name' => 'required|max:100',
             'discount' => 'required',
@@ -50,6 +51,7 @@ class OfferController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $this->authorize("update", Offer::class);
         $request->validate([
             'name' => 'required|max:100',
             'discount' => 'required',
@@ -69,6 +71,7 @@ class OfferController extends Controller
      */
     public function destroy(string $id)
     {
+        $this->authorize("destroy", Offer::class);
         $offer = Offer::find($id);
 
         if ($offer != null) {
