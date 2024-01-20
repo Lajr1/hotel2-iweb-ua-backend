@@ -30,7 +30,7 @@ return new class extends Migration
         });
 
         Schema::table('services', function (Blueprint $table) {
-            $table->integer("price")->change();
+            $table->text("price")->change();
         });
     }
 };
