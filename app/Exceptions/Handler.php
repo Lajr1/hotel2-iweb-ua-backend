@@ -33,4 +33,9 @@ class Handler extends ExceptionHandler
     {
         return response()->json(['error' => 'Unauthenticated. '], 401);
     }
+
+    protected function shouldReturnJson($request, Throwable $e)
+    {
+        return true;
+    }
 }

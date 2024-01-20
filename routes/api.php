@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +19,8 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('ping', function () {
         return response()->json('pong', 200);
     });
+    Route::get('users/index', [UserController::class, 'index']);
 });
 
 Route::post('login', [UserController::class, 'login']);
+Route::post('register', [UserController::class, 'registerUser']);
