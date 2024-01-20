@@ -25,15 +25,11 @@ Route::group(['middleware' => ['auth:api']], function () {
     });
 
     // RUTAS SERVICIOS
-    Route::get('service', [ServiceController::class, 'index']);
-    Route::get('service/{id}', [ServiceController::class, 'show']);
     Route::post('service/create', [ServiceController::class, 'store']);
     Route::put('service/update/{id}', [ServiceController::class, 'update']);
     Route::get('service/delete/{id}', [ServiceController::class, 'destroy']);
 
     // RUTAS OFERTAS
-    Route::get('offer', [OfferController::class, 'index']);
-    Route::get('offer/{id}', [OfferController::class, 'show']);
     Route::post('offer/create', [OfferController::class, 'store']);
     Route::put('offer/update/{id}', [OfferController::class, 'update']);
     Route::get('offer/delete/{id}', [OfferController::class, 'destroy']);
@@ -41,3 +37,11 @@ Route::group(['middleware' => ['auth:api']], function () {
 
 Route::post('login', [UserController::class, 'login']);
 Route::post('register', [UserController::class, 'registerUser']);
+
+// RUTAS PÚBLICAS SERVICIOS
+Route::get('service', [ServiceController::class, 'index']);
+Route::get('service/{id}', [ServiceController::class, 'show']);
+
+// RUTAS PÚBLICAS OFERTAS
+Route::get('offer', [OfferController::class, 'index']);
+Route::get('offer/{id}', [OfferController::class, 'show']);
