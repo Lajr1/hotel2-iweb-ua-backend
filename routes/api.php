@@ -19,10 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('ping', function () {
-
-        //Mail::to(Auth::user()->email)->send(new Registro(Auth::user()));
         return response()->json('pong', 200);
     });
+  
+    Route::get('users/index', [UserController::class, 'index']);
 
     // RUTAS PRIVADAS SERVICIOS
     Route::post('service/create', [ServiceController::class, 'store']);

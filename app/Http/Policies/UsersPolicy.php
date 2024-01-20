@@ -16,4 +16,11 @@ class UsersPolicy
             return true;
         }
     }
+
+    public function index(User $loggedUser)
+    {
+        if (!$loggedUser->isAdmin()) {
+            return false;
+        }
+    }
 }

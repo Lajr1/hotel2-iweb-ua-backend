@@ -16,4 +16,14 @@ class UsersTypeRepository
             return null;
         }
     }
+
+    public function findById(int $id)
+    {
+        try {
+            $type = UsersType::query()->where('id', $id)->firstOrFail();
+            return $type;
+        } catch (\Throwable $th) {
+            return null;
+        }
+    }
 }
