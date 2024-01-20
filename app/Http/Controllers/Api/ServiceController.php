@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\ResponseHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
 
 class ServiceController extends Controller
 {
+    use ResponseHelper;
     /**
      * Display a listing of the resource.
      */
@@ -23,9 +25,9 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          'title' => 'required|max:100',
-          'description' => 'required',
-          'price' => 'required'
+            'title' => 'required|max:100',
+            'description' => 'required',
+            'price' => 'required'
         ]);
         Service::create($request->all());
     }
@@ -36,7 +38,12 @@ class ServiceController extends Controller
     public function show(string $id)
     {
         $service = Service::find($id);
-        return $service;
+
+        if ($service != null) {
+            return $this->makeSuccessResponse($service, 200);
+        } else {
+            return $this->makeErrorResponse("Service not found", 404);
+        }
     }
 
     /**
@@ -45,12 +52,18 @@ class ServiceController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-          'title' => 'required|max:100',
-          'description' => 'required',
-          'price' => 'required'
+            'title' => 'required|max:100',
+            'description' => 'required',
+            'price' => 'required'
         ]);
         $service = Service::find($id);
-        $service->update($request->all());
+
+        if ($service != null) {
+            $service->update($request->all());
+            return $this->makeSuccessResponse($service, 200);
+        } else {
+            return $this->makeErrorResponse("Service not found", 404);
+        }
     }
 
     /**
@@ -59,6 +72,12 @@ class ServiceController extends Controller
     public function destroy(string $id)
     {
         $service = Service::find($id);
-        $service->delete();
+
+        if ($service != null) {
+            $service->delete();
+            return $this->makeSuccessResponse($service, 200);
+        } else {
+            return $this->makeErrorResponse("Service not found", 404);
+        }
     }
 }

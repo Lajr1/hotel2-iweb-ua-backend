@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\ResponseHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Offer;
 
 class OfferController extends Controller
 {
+    use ResponseHelper;
     /**
      * Display a listing of the resource.
      */
@@ -23,8 +25,8 @@ class OfferController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          'name' => 'required|max:100',
-          'discount' => 'required',
+            'name' => 'required|max:100',
+            'discount' => 'required',
         ]);
         Offer::create($request->all());
     }
@@ -35,7 +37,12 @@ class OfferController extends Controller
     public function show(string $id)
     {
         $offer = Offer::find($id);
-        return $offer;
+
+        if ($offer != null) {
+            return $this->makeSuccessResponse($offer, 200);
+        } else {
+            return $this->makeErrorResponse("Offer not found", 404);
+        }
     }
 
     /**
@@ -44,11 +51,17 @@ class OfferController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-          'name' => 'required|max:100',
-          'discount' => 'required',
+            'name' => 'required|max:100',
+            'discount' => 'required',
         ]);
         $offer = Offer::find($id);
-        $offer->update($request->all());
+
+        if ($offer != null) {
+            $offer->update($request->all());
+            return $this->makeSuccessResponse($offer, 200);
+        } else {
+            return $this->makeErrorResponse("Offer not found", 404);
+        }
     }
 
     /**
@@ -57,6 +70,12 @@ class OfferController extends Controller
     public function destroy(string $id)
     {
         $offer = Offer::find($id);
-        $offer->delete();
+
+        if ($offer != null) {
+            $offer->delete();
+            return $this->makeSuccessResponse($offer, 200);
+        } else {
+            return $this->makeErrorResponse("Offer not found", 404);
+        }
     }
 }

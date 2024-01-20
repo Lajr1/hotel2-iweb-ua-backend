@@ -24,12 +24,12 @@ Route::group(['middleware' => ['auth:api']], function () {
         return response()->json('pong', 200);
     });
 
-    // RUTAS SERVICIOS
+    // RUTAS PRIVADAS SERVICIOS
     Route::post('service/create', [ServiceController::class, 'store']);
     Route::put('service/update/{id}', [ServiceController::class, 'update']);
     Route::get('service/delete/{id}', [ServiceController::class, 'destroy']);
 
-    // RUTAS OFERTAS
+    // RUTAS PRIVADAS OFERTAS
     Route::post('offer/create', [OfferController::class, 'store']);
     Route::put('offer/update/{id}', [OfferController::class, 'update']);
     Route::get('offer/delete/{id}', [OfferController::class, 'destroy']);
