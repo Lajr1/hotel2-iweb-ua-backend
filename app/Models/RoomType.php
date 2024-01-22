@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property int id
@@ -24,5 +25,10 @@ class RoomType extends Model
     public function rooms()
     {
         return $this->hasMany(Room::class);
+    }
+
+    public function offers(): BelongsToMany
+    {
+        return $this->belongsToMany(Offer::class)->withPivot('initial_date', 'end_date')->withTimestamps();
     }
 }
