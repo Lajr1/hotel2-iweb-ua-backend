@@ -32,12 +32,10 @@ class RoomTypeRepository
         if (!empty($filters["room_type_name"])) {
             $builder->where("name", $filters["room_type_name"]);
         }
-        $result = [];
-        $builder->paginate($perPage, ["*"], 'page', $page)->map(function (RoomType $roomType) use (&$result, $reservationsRepository, $filters) {
-
+        $res = $builder->paginate($perPage, ["*"], 'page', $page)->through(function (RoomType $roomType) use ($reservationsRepository, $filters) {
             $reservations = $reservationsRepository->findReservadtionsForDateAndType($roomType->id,  $filters["check_in"], $filters["check_out"]);
             if ($reservations->count() >= $roomType->rooms_number) {
-                $result[] = [
+                return [
                     "id" => $roomType->id,
                     'name' => $roomType->name,
                     'occupants' => $roomType->people_number,
@@ -46,7 +44,7 @@ class RoomTypeRepository
                     "offers" => ["WIP"] // to do
                 ];
             } else {
-                $result[] = [
+                return [
                     "id" => $roomType->id,
                     'name' => $roomType->name,
                     'occupants' => $roomType->people_number,
@@ -57,7 +55,7 @@ class RoomTypeRepository
             }
         });
 
-        return $result;
+        return $res;
     }
 
     public function getAllTypes()
