@@ -37,7 +37,7 @@ class RoomTypeRepository
 
             $reservations = $reservationsRepository->findReservadtionsForDateAndType($roomType->id,  $filters["check_in"], $filters["check_out"]);
             if ($reservations->count() >= $roomType->rooms_number) {
-                $result[$roomType->id] = [
+                $result[] = [
                     "id" => $roomType->id,
                     'name' => $roomType->name,
                     'occupants' => $roomType->people_number,
@@ -46,7 +46,7 @@ class RoomTypeRepository
                     "offers" => ["WIP"] // to do
                 ];
             } else {
-                $result[$roomType->id] = [
+                $result[] = [
                     "id" => $roomType->id,
                     'name' => $roomType->name,
                     'occupants' => $roomType->people_number,
