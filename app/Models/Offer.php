@@ -21,8 +21,8 @@ class Offer extends Model
         'discount',
     ];
 
-    public function room_types(): BelongsToMany
+    public function offer_room_types()
     {
-        return $this->belongsToMany(RoomType::class)->withPivot('initial_date', 'end_date')->withTimestamps();
+        return $this->hasMany(OfferRoomType::class);
     }
 }

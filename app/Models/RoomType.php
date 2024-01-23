@@ -33,8 +33,8 @@ class RoomType extends Model
         return $this->hasMany(Reservation::class);
     }
 
-    public function offers(): BelongsToMany
+    public function room_type_offers()
     {
-        return $this->belongsToMany(Offer::class)->withPivot('initial_date', 'end_date')->withTimestamps();
+        return $this->hasMany(OfferRoomType::class);
     }
 }
