@@ -24,8 +24,8 @@ class RoomTypeController extends Controller
         $filters = [];
         try {
 
-            $filters["check_in"] = Carbon::createFromFormat('d-m-Y', $request["check_in"])->endOfDay();
-            $filters["check_out"] = Carbon::createFromFormat('d-m-Y', $request["check_out"])->endOfDay();
+            $filters["check_in"] = Carbon::createFromFormat('Y-m-d', $request["check_in"])->endOfDay();
+            $filters["check_out"] = Carbon::createFromFormat('Y-m-d', $request["check_out"])->endOfDay();
         } catch (\Throwable $th) {
             throw new BaseException('There is a problem with the date format', 400);
         }
