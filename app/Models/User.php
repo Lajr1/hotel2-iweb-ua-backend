@@ -66,6 +66,11 @@ class User extends Authenticatable
         return $this->belongsTo(UsersType::class, 'user_type');
     }
 
+    public function reservas()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
     public function setType(UsersType $user_type)
     {
         $this->user_type = $user_type;
