@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\OfferController;
+use App\Http\Controllers\Api\RoomTypeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,7 +22,7 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('ping', function () {
         return response()->json('pong', 200);
     });
-  
+
     Route::get('users/index', [UserController::class, 'index']);
 
     // RUTAS PRIVADAS SERVICIOS
@@ -45,3 +46,8 @@ Route::get('service/{id}', [ServiceController::class, 'show']);
 // RUTAS PÚBLICAS OFERTAS
 Route::get('offer', [OfferController::class, 'index']);
 Route::get('offer/{id}', [OfferController::class, 'show']);
+
+//RUTAS PÚBLICAS TIPOS DE HABITACIÓN
+
+Route::get('room-types', [RoomTypeController::class, 'indexTypes']);
+Route::get('search', [RoomTypeController::class, 'indexSearch']);
