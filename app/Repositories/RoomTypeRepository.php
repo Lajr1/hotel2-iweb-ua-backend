@@ -33,7 +33,7 @@ class RoomTypeRepository
             $builder->where("name", $filters["room_type_name"]);
         }
         $result = [];
-        $builder->get()->map(function (RoomType $roomType) use (&$result, $reservationsRepository, $filters) {
+        $builder->paginate($perPage, ["*"], 'page', $page)->map(function (RoomType $roomType) use (&$result, $reservationsRepository, $filters) {
 
             $reservations = $reservationsRepository->findReservadtionsForDateAndType($roomType->id,  $filters["check_in"], $filters["check_out"]);
             if ($reservations->count() >= $roomType->rooms_number) {

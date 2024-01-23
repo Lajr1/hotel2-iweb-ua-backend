@@ -32,7 +32,7 @@ class RoomTypeController extends Controller
         $filters["occupants"] = $request["occupants"];
         $filters["room_type_name"] = $request["room_type_name"];
 
-        return $repository->getAllPaginatedForSearch(1, 1, $filters);
+        return $repository->getAllPaginatedForSearch($request->get('page', 1), $request->get('perPage', 10), $filters);
     }
 
     public function indexTypes()
