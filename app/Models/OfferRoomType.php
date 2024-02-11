@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class OfferRoomType extends Model
 {
+    protected $table = 'offer_room_type_talbe';
+
     public function id_offer()
     {
         return $this->belongsTo(Offer::class, 'id_offer');
