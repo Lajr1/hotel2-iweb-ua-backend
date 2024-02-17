@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Exceptions\BaseException;
 use App\Models\RoomType;
 use App\Models\Offer;
 use App\Models\OfferRoomType;
 use App\Repositories\OfferRepository;
+use App\Repositories\RoomTypeRepository;
 
 class AddOfferToRoomType {
     public function __invoke($data)
@@ -18,9 +20,9 @@ class AddOfferToRoomType {
         $offerRepository = new OfferRepository();
 
         $roomType = $this->getRoomType($data['room_type']);
+        $offer = $this->getOffer($data['offer']);
         $initialDate = $data['initial_date'];
         $endDate = $data['end_date'];
-        $offer = $this->getOffer($data['offer']);
 
         if ($offerRepository->countOffersOfRoomType($roomType->id, $initialDate, $endDate) > 0) {
             throw new BaseException("No puede haber más de una oferta en un rango de fechas", 400);
@@ -57,5 +59,6 @@ class AddOfferToRoomType {
         if (empty($offer)) {
             throw new BaseException("Oferta no encontrada", 400);
         }
+        return $offer;
     }
 }
