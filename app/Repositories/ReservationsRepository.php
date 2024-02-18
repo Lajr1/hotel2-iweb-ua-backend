@@ -13,4 +13,14 @@ class ReservationsRepository
             ->orWhereBetween('check_out', [$check_in, $check_out])->where('room_type_id', $roomType)->get();
         return $reservations;
     }
+
+    public function findById(int $id)
+    {
+        try {
+            $type = Reservation::query()->where('id', $id)->firstOrFail();
+            return $type;
+        } catch (\Throwable $th) {
+            return null;
+        }
+    }
 }
