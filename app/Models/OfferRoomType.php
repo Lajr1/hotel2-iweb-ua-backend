@@ -3,15 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 /**
- * @property Offer id_offer
- * @property RoomType id_room_type
- * @property Carbon initial_date
- * @property Carbon end_date 
- * @property Carbon created_at   
- * @property Carbon updated_at 
- * @property Carbon deleted_at 
+ * @property Offer $id_offer
+ * @property RoomType $id_room_type
+ * @property Carbon $initial_date
+ * @property Carbon $end_date 
+ * @property Carbon $created_at   
+ * @property Carbon $updated_at 
+ * @property Carbon $deleted_at 
  */
 class OfferRoomType extends Model
 {
